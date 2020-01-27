@@ -1,0 +1,28 @@
+{
+  "name": "react-complete-router-example",
+  "homepage": "https://aposoftworks.github.io/react-complete-router",
+  "version": "0.0.0",
+  "license": "BSD-3",
+  "private": true,
+  "dev-dependencies": {
+    "bootstrap": "^4.4.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-complete-router": "^1.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "bootstrap": "^4.4.1",
+    "react-complete-router": "^1.4.2",
+    "react-scripts": "^1.1.4",
+    "react-select": "^3.0.8"
+  },
+  "dependencies": {
+    "react-syntax-highlighter": "^12.2.1"
+  }
+}
