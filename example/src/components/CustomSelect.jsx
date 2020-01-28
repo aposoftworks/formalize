@@ -3,7 +3,7 @@ import React 	from '../node/react';
 //Packages
 import ReactSelect	from "react-select";
 
-//Formalize
+//formalized
 import { Wrapper }	from "../form";
 
 export default function CustomSelect ({name, isMulti, onChange, className, children, ...props}) {

@@ -1,6 +1,6 @@
 import React from '../node/react';
 
-//Formalize
+//formalized
 import { Form }				from "../form";
 
 //Packages
@@ -27,7 +27,7 @@ export default function Extending () {
         <div className="dashview">
 			<h1 className="title mb-4">Extending</h1>
 
-			<p>Formalize gives you the option to build your own custom input, enabling you to use third party packages to handle those, such as react-select. We will show you how you could do that.</p>
+			<p>formalized gives you the option to build your own custom input, enabling you to use third party packages to handle those, such as react-select. We will show you how you could do that.</p>
 
             <h3>Installing</h3>
 
@@ -47,7 +47,7 @@ export default function Extending () {
 //Packages
 import ReactSelect	from "react-select";
 
-//Formalize
+//formalized
 import { Wrapper }	from "../form";
 
 export default function CustomSelect ({name, isMulti, onChange, className, children, ...props}) {

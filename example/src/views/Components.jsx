@@ -1,6 +1,6 @@
 import React from '../node/react';
 
-//Formalize
+//formalized
 import { Form, Group, Input, Text, Toggle, Select }		from "../form";
 
 //Packages

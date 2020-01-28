@@ -29,7 +29,6 @@ var __assign = function() {
 //Packages
 //Contexts
 var FormContext = createContext([]);
-//# sourceMappingURL=FormContext.js.map
 
 //Form class
 function Form(props) {
@@ -90,12 +89,10 @@ function Form(props) {
     return (createElement(FormContext.Provider, { value: [form, setForm] },
         createElement("form", __assign({}, props, { encType: (props.file ? "multipart/form-data" : undefined), onSubmit: onSubmit }), props.children)));
 }
-//# sourceMappingURL=Form.js.map
 
 //Packages
 //Contexts
 var GroupContext = createContext("");
-//# sourceMappingURL=GroupContext.js.map
 
 //Group class
 function Group(props) {
@@ -110,7 +107,6 @@ function Group(props) {
     return (createElement(GroupContext.Provider, { value: position },
         createElement("div", __assign({}, props), props.children)));
 }
-//# sourceMappingURL=Group.js.map
 
 function dig(obj, path, value) {
     if (value === void 0) { value = null; }
@@ -131,7 +127,6 @@ function dig(obj, path, value) {
         return context[pList[len - 1]] === null ? "" : context[pList[len - 1]];
     }
 }
-//# sourceMappingURL=dig.js.map
 
 //Input class
 function Input(props) {
@@ -168,7 +163,6 @@ function Input(props) {
     //-------------------------------------------------
     return (createElement("input", __assign({}, props, { value: value, onChange: onChange })));
 }
-//# sourceMappingURL=Input.js.map
 
 //Textarea class
 function Text(props) {
@@ -201,7 +195,6 @@ function Text(props) {
     //-------------------------------------------------
     return (createElement("textarea", __assign({}, props, { value: value, onChange: onChange })));
 }
-//# sourceMappingURL=Text.js.map
 
 //Toggle class
 function Toggle(props) {
@@ -233,7 +226,6 @@ function Toggle(props) {
     var componentvalue = finalvalue === undefined ? !!props.initialValue : finalvalue;
     return (createElement("input", __assign({}, props, { type: "checkbox", checked: componentvalue, onChange: onChange })));
 }
-//# sourceMappingURL=Toggle.js.map
 
 //Input class
 function Select(props) {
@@ -270,7 +262,6 @@ function Select(props) {
     //-------------------------------------------------
     return (createElement("select", __assign({}, props, { value: value, onChange: onChange }), props.children));
 }
-//# sourceMappingURL=Select.js.map
 
 //Wrapper helps you give functionality to any component
 function Wrapper(props) {
@@ -296,7 +287,6 @@ function Wrapper(props) {
     //-------------------------------------------------
     return (props.children);
 }
-//# sourceMappingURL=Wrapper.js.map
 
 //Modules components
 //Separated components
@@ -318,7 +308,6 @@ var bundled = {
     Select: Select,
     Wrapper: Wrapper,
 };
-//# sourceMappingURL=index.js.map
 
 export default bundled;
 export { Form$1 as Form, Group$1 as Group, Input$1 as Input, Text$1 as Text, Toggle$1 as Toggle, Select$1 as Select, Wrapper$1 as Wrapper };

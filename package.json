@@ -1,10 +1,10 @@
 {
-	"name": "formalize",
-	"version": "1.0.0",
+	"name": "formalized",
+	"version": "1.0.1",
 	"description": "A simple and straight-foward wrapper around forms that works as you would expect.",
 	"author": "aposoftworks",
 	"license": "BSD-3",
-	"repository": "aposoftworks/formalize",
+	"repository": "aposoftworks/formalized",
 	"main": "dist/index.js",
 	"module": "dist/index.es.js",
 	"jsnext:main": "dist/index.es.js",

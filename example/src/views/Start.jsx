@@ -1,6 +1,6 @@
 import React from '../node/react';
 
-//Formalize
+//formalized
 import { Form, Group, Input, Text }				from "../form";
 
 //Packages
@@ -24,20 +24,20 @@ export default function Start () {
         <div className="dashview">
 			<h1 className="title mb-4">How to start</h1>
 
-			<p>Formalize is a complete solution for handling forms, so you don't have to waste time taking care of states and such. Just get the data you want, whenever you want, however you want.</p>
+			<p>formalized is a complete solution for handling forms, so you don't have to waste time taking care of states and such. Just get the data you want, whenever you want, however you want.</p>
 
             <h3>Installing</h3>
 
             <h4>NPM</h4>
 
             <SyntaxHighlighter language="bash" style={dark}>
-                npm install formalize --save-dev
+                npm install formalized --save-dev
             </SyntaxHighlighter>
 
             <h4>Github</h4>
 
             <SyntaxHighlighter language="bash" style={dark}>
-            npm i git+https://github.com/aposoftworks/formalize.git
+            npm i git+https://github.com/aposoftworks/formalized.git
             </SyntaxHighlighter>
 
             <h4>Usage</h4>
