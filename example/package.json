@@ -1,6 +1,6 @@
 {
-  "name": "react-formalize-example",
-  "homepage": "https://aposoftworks.github.io/react-formalize",
+  "name": "formalization-example",
+  "homepage": "https://aposoftworks.github.io/formalization",
   "version": "0.0.0",
   "license": "BSD-3",
   "private": true,

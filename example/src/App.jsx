@@ -13,7 +13,7 @@ import Dashview 	from "./components/Dashview";
 
 export default function App () {
 	return (
-		<Router basetitle="react-formalize">
+		<Router basetitle="formalization">
 			<Switch>
 				<Route path="/" to={Home} title="" exact />
 
