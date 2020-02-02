@@ -1,7 +1,7 @@
-# formalized
+# react-formalize
 
 
-[![NPM](https://img.shields.io/npm/v/formalized.svg)](https://www.npmjs.com/package/formalized) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Build Status](https://travis-ci.org/darklight9811/formalized.svg?branch=master)](https://travis-ci.org/darklight9811/formalized) ![npm](https://img.shields.io/npm/dt/formalized)
+[![NPM](https://img.shields.io/npm/v/@aposoftworks/react-formalize.svg)](https://www.npmjs.com/package/@aposoftworks/react-formalize) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Build Status](https://travis-ci.org/aposoftworks/react-formalize.svg?branch=master)](https://travis-ci.org/aposoftworks/react-formalize) ![npm](https://img.shields.io/npm/dt/@aposoftworks/react-formalize)
 
 A simple and straight-foward wrapper around forms that works as you would expect. Fully customizable and able to handle files and images, using formdata.
 
