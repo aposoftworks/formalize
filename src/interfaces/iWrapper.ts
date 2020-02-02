@@ -3,5 +3,6 @@ import { ReactChildren } from "react";
 export interface iWrapperProps {
 	name 		: string,
 	value 		: any,
-	children 	: ReactChildren
+	children 	: ReactChildren,
+	filters? 	: Array<(value : any) => any>,
 }

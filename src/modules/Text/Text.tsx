@@ -3,6 +3,7 @@ import * as React 		from "react";
 
 //Helpers
 import dig 				from "../../helpers/dig";
+import filters			from "../../helpers/filters";
 
 //Interface
 import { iInputProps }	from "../../interfaces/iInput";
@@ -30,7 +31,7 @@ export default function Text (props : iInputProps) {
 	//-------------------------------------------------
 	const onChange = React.useCallback((node) => {
 		//Get raw value
-		let _value = node.target.value;
+		let _value = filters(node.target.value, props.filters);
 
 		//Check if the user wants to edit it
 		if (props.onChange) _value = props.onChange(_value, node);

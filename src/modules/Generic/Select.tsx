@@ -3,6 +3,7 @@ import * as React 		from "react";
 
 //Helpers
 import dig 				from "../../helpers/dig";
+import filters			from "../../helpers/filters";
 
 //Interface
 import { iInputProps }	from "../../interfaces/iInput";
@@ -28,7 +29,7 @@ export default function Select (props : iInputProps) {
 
 	const onChange = React.useCallback((node) => {
 		//Get raw value
-		let localvalue = node.target.value;
+		let localvalue = filters(node.target.value, props.filters);
 
 		//Check if the user wants to edit it
 		if (props.onChange) localvalue = props.onChange(localvalue, node);

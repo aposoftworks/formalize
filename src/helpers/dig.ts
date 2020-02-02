@@ -1,4 +1,4 @@
-export default function dig (obj : Object, path : string, value = null) : Object | any {
+export default function dig (obj : Object, path : string, value? : any) : Object | any {
     let pList 	= path.split('.');
     let len 	= pList.length;
     let context = obj;

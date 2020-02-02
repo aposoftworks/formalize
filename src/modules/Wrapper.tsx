@@ -3,6 +3,7 @@ import * as React 		from "react";
 
 //Helpers
 import dig 				from "../helpers/dig";
+import filters 			from "../helpers/filters";
 
 //Interfaces
 import { iWrapperProps }	from "../interfaces/iWrapper";
@@ -29,8 +30,9 @@ export default function Wrapper (props : iWrapperProps) {
 
 	React.useEffect(() => {
 		//Set it in the context
-		let updatedform = {...form};
-		updatedform 	= dig(updatedform, position, props.value);
+		let updatedform 	= {...form};
+		let updatedvalue	= filters(props.value, props.filters);
+		updatedform 		= dig(updatedform, position, updatedvalue);
 
 		//Update values
 		setForm(updatedform);

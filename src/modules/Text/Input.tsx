@@ -3,6 +3,7 @@ import * as React 		from "react";
 
 //Helpers
 import dig 				from "../../helpers/dig";
+import filters 			from "../../helpers/filters";
 
 //Interface
 import { iInputProps }	from "../../interfaces/iInput";
@@ -28,10 +29,10 @@ export default function Input (props : iInputProps) {
 
 	const onChange = React.useCallback((event) => {
 		//Get raw value
-		let localvalue = event.target.value;
+		let localvalue = filters(event.target.value, props.filters);
 
 		//Check if the user wants to edit it
-		if (props.onChange) localvalue = props.onChange(localvalue);
+		if (props.onChange) localvalue = props.onChange(localvalue, event);
 
 		//Set it in the context
 		let updatedform = {...form};

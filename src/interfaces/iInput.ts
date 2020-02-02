@@ -1,4 +1,8 @@
+import { ReactChildren } from "react";
+
 export interface iInputProps {
-	name : string,
-	onChange? (localvalue: string | string[], node : Object) : void,
+	name 										: string,
+	onChange? (localvalue: any, node : Object) 	: any,
+	filters? 									: Array<(value : any) => any>,
+	children? 									: ReactChildren,
 }
