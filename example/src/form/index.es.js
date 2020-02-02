@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, createElement, useContext, useMemo, createContext } from 'react';
+import { useContext, createElement, useCallback, useMemo, useEffect, createContext, useState } from 'react';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -83,14 +83,13 @@ function Form(props) {
         }
         else if (value === false)
             setForm({});
-    }, []);
+    }, [form, props]);
     //-------------------------------------------------
     // Render
     //-------------------------------------------------
     return (createElement(FormContext.Provider, { value: [form, setForm] },
         createElement("form", __assign({}, props, { encType: (props.file ? "multipart/form-data" : undefined), onSubmit: onSubmit }), props.children)));
 }
-//# sourceMappingURL=Form.js.map
 
 //Packages
 //Contexts
@@ -180,6 +179,7 @@ function Input(props) {
     //-------------------------------------------------
     return (createElement("input", __assign({}, props, { value: value, onChange: onChange })));
 }
+//# sourceMappingURL=Input.js.map
 
 //Textarea class
 function Text(props) {

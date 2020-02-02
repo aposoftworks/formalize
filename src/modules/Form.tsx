@@ -67,7 +67,7 @@ export default function Form (props : iFormProps) {
             });
         }
 		else if (value === false) setForm({});
-	}, []);
+	}, [form, props]);
 
 	//-------------------------------------------------
 	// Render

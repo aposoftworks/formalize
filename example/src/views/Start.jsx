@@ -64,7 +64,7 @@ export default function App () {
 			<h4>Example</h4>
 
 			<div className="row">
-				<Form onChange={(data) => {setexample(data)}} className="col-md-6">
+				<Form onChange={(data) => {setexample(data)}} onSubmit={console.log} className="col-md-6">
 					<Group name="contact">
 						<div className="form-group">
 							<Input name="name" 	placeholder="Your name"		className="form-control" 	/>
@@ -76,6 +76,8 @@ export default function App () {
 					<div className="form-group">
 						<Text name="message" className="form-control" placeholder="A message to us" />
 					</div>
+
+					<button type="submit" className="btn btn-primary col">Submit (check your console)</button>
 				</Form>
 				<div className="col-md-6">
 					<SyntaxHighlighter language="json" style={dark}>{JSON.stringify(example, null, "\t").toString()}</SyntaxHighlighter>

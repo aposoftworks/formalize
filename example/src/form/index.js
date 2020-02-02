@@ -87,14 +87,13 @@ function Form(props) {
         }
         else if (value === false)
             setForm({});
-    }, []);
+    }, [form, props]);
     //-------------------------------------------------
     // Render
     //-------------------------------------------------
     return (React.createElement(FormContext.Provider, { value: [form, setForm] },
         React.createElement("form", __assign({}, props, { encType: (props.file ? "multipart/form-data" : undefined), onSubmit: onSubmit }), props.children)));
 }
-//# sourceMappingURL=Form.js.map
 
 //Packages
 //Contexts
@@ -184,6 +183,7 @@ function Input(props) {
     //-------------------------------------------------
     return (React.createElement("input", __assign({}, props, { value: value, onChange: onChange })));
 }
+//# sourceMappingURL=Input.js.map
 
 //Textarea class
 function Text(props) {
