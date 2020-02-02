@@ -11,7 +11,7 @@ export default function dig (obj : Object, path : string, value? : any) : Object
         context = context[elem];
 	}
 
-    if (value !== null) {
+    if (value !== null && value !== undefined) {
     	context[pList[len-1]] = value;
     	return obj;
     }

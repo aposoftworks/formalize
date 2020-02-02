@@ -9,7 +9,7 @@ export default function Navbar () {
 
     return (
         <div className="sidebar p-4">
-            <h4 className="title">formalized</h4>
+            <h4 className="title">formalization</h4>
 
             <div className="sidebar-links">
                 <Link active className="link" to="/">Home</Link>
