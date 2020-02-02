@@ -2,7 +2,7 @@
 import Form 	from '../modules/Form';
 import Group 	from '../modules/Group';
 import Input 	from '../modules/Text/Input';
-import Textarea	from "../modules/Text/Textarea";
+import Text		from "../modules/Text/Text";
 
 describe('Components present', () => {
 	it('Form', () => {
@@ -17,7 +17,7 @@ describe('Components present', () => {
 		expect(Input).toBeTruthy();
 	});
 
-	it('Textarea', () => {
-		expect(Textarea).toBeTruthy();
+	it('Text', () => {
+		expect(Text).toBeTruthy();
 	});
 });

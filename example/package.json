@@ -1,6 +1,6 @@
 {
-  "name": "react-complete-router-example",
-  "homepage": "https://aposoftworks.github.io/react-complete-router",
+  "name": "react-formalize-example",
+  "homepage": "https://aposoftworks.github.io/react-formalize",
   "version": "0.0.0",
   "license": "BSD-3",
   "private": true,
@@ -20,7 +20,11 @@
     "bootstrap": "^4.4.1",
     "react-complete-router": "^1.4.2",
     "react-scripts": "^1.1.4",
-    "react-select": "^3.0.8"
+    "react-select": "^3.0.8",
+	"braces": "^3.0.2",
+	"mem": "^6.0.1",
+	"eslint": "^6.8.0",
+	"webpack-dev-server": "^3.10.1"
   },
   "dependencies": {
     "react-syntax-highlighter": "^12.2.1"
