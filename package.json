@@ -1,6 +1,6 @@
 {
 	"name": "@aposoftworks/react-formalize",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "A simple and straight-foward wrapper around forms that works as you would expect.",
 	"author": "aposoftworks",
 	"license": "BSD-3",
