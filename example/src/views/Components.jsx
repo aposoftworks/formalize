@@ -216,7 +216,7 @@ export default function Components () {
 
 			<div className="row">
 				<div className="col-md-6">
-					<p>This is the core of the framework, you will need this to retrieve any data from the inputs you have. Any prop beyond file, onChange, onSubmit will be passed to the form tag.</p>
+					<p>To help you handle files better, we have it in a unique tag. We handle multiple files and any type for you.</p>
 
 					<SyntaxHighlighter language="jsx" style={dark}>
 {`
