@@ -1,7 +1,7 @@
 export default function dig (obj : Object, path : string, value? : any) : Object | any {
     let pList 	= path.split('.');
     let len 	= pList.length;
-    let context = obj;
+    let context = obj || {};
 
     for (let i = 0; i < len-1; i++) {
         let elem = pList[i];

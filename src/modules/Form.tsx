@@ -29,7 +29,7 @@ export default function Form (props : iFormProps) {
 	// Functions
 	//-------------------------------------------------
 
-	const onSubmit = React.useCallback((event) => {
+	const onProcessSubmit = React.useCallback((event) => {
 		//Prevent the page from reloading
 		event.preventDefault();
 
@@ -73,9 +73,12 @@ export default function Form (props : iFormProps) {
 	// Render
 	//-------------------------------------------------
 
+	//extract internal props
+	const { file, onChange, onSubmit, children, ...htmlprops } = props;
+
 	return (
 		<FormContext.Provider value={[form, setForm]}>
-			<form {...props} encType={(props.file? "multipart/form-data":undefined)} onSubmit={onSubmit}>
+			<form {...htmlprops} encType={(props.file? "multipart/form-data":undefined)} onSubmit={onProcessSubmit}>
 				{props.children}
 			</form>
 		</FormContext.Provider>

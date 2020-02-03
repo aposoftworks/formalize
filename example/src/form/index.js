@@ -30,10 +30,21 @@ var __assign = function() {
     return __assign.apply(this, arguments);
 };
 
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
+
 //Packages
 //Contexts
 var FormContext = React.createContext([]);
-//# sourceMappingURL=FormContext.js.map
 
 //Form class
 function Form(props) {
@@ -52,7 +63,7 @@ function Form(props) {
     //-------------------------------------------------
     // Functions
     //-------------------------------------------------
-    var onSubmit = React.useCallback(function (event) {
+    var onProcessSubmit = React.useCallback(function (event) {
         //Prevent the page from reloading
         event.preventDefault();
         //Check if the parent wants to know
@@ -91,14 +102,15 @@ function Form(props) {
     //-------------------------------------------------
     // Render
     //-------------------------------------------------
+    //extract internal props
+    var file = props.file, onChange = props.onChange, onSubmit = props.onSubmit, children = props.children, htmlprops = __rest(props, ["file", "onChange", "onSubmit", "children"]);
     return (React.createElement(FormContext.Provider, { value: [form, setForm] },
-        React.createElement("form", __assign({}, props, { encType: (props.file ? "multipart/form-data" : undefined), onSubmit: onSubmit }), props.children)));
+        React.createElement("form", __assign({}, htmlprops, { encType: (props.file ? "multipart/form-data" : undefined), onSubmit: onProcessSubmit }), props.children)));
 }
 
 //Packages
 //Contexts
 var GroupContext = React.createContext("");
-//# sourceMappingURL=GroupContext.js.map
 
 //Group class
 function Group(props) {
@@ -113,12 +125,11 @@ function Group(props) {
     return (React.createElement(GroupContext.Provider, { value: position },
         React.createElement("div", __assign({}, props), props.children)));
 }
-//# sourceMappingURL=Group.js.map
 
 function dig(obj, path, value) {
     var pList = path.split('.');
     var len = pList.length;
-    var context = obj;
+    var context = obj || {};
     for (var i = 0; i < len - 1; i++) {
         var elem = pList[i];
         if (!(elem in context))
@@ -133,7 +144,6 @@ function dig(obj, path, value) {
         return context[pList[len - 1]] === null ? "" : context[pList[len - 1]];
     }
 }
-//# sourceMappingURL=dig.js.map
 
 function filters(value, filterslist) {
     var initialvalue = value;
@@ -146,7 +156,6 @@ function filters(value, filterslist) {
     }
     return initialvalue;
 }
-//# sourceMappingURL=filters.js.map
 
 //Input class
 function Input(props) {
@@ -183,7 +192,6 @@ function Input(props) {
     //-------------------------------------------------
     return (React.createElement("input", __assign({}, props, { value: value, onChange: onChange })));
 }
-//# sourceMappingURL=Input.js.map
 
 //Textarea class
 function Text(props) {
@@ -216,7 +224,6 @@ function Text(props) {
     //-------------------------------------------------
     return (React.createElement("textarea", __assign({}, props, { value: value, onChange: onChange })));
 }
-//# sourceMappingURL=Text.js.map
 
 //Toggle class
 function Toggle(props) {
@@ -247,7 +254,6 @@ function Toggle(props) {
     //-------------------------------------------------
     return (React.createElement("input", __assign({}, props, { type: "checkbox", checked: !!finalvalue, onChange: onChange })));
 }
-//# sourceMappingURL=Toggle.js.map
 
 //Input class
 function Select(props) {
@@ -284,7 +290,6 @@ function Select(props) {
     //-------------------------------------------------
     return (React.createElement("select", __assign({}, props, { value: value, onChange: onChange }), props.children));
 }
-//# sourceMappingURL=Select.js.map
 
 //Wrapper helps you give functionality to any component
 function Wrapper(props) {
@@ -311,7 +316,43 @@ function Wrapper(props) {
     //-------------------------------------------------
     return (props.children);
 }
-//# sourceMappingURL=Wrapper.js.map
+
+function File(props) {
+    //-------------------------------------------------
+    // Properties
+    //-------------------------------------------------
+    //Contexts
+    var _a = React.useContext(FormContext), form = _a[0], setForm = _a[1];
+    var context = React.useContext(GroupContext);
+    var position = context ? (context + "." + props.name) : props.name;
+    //-------------------------------------------------
+    // Functions
+    //-------------------------------------------------
+    var onChange = React.useCallback(function (node) {
+        //No file uploaded
+        if (node.target.files.length == 0) {
+            var updatedform_1 = __assign({}, form);
+            updatedform_1 = dig(updatedform_1, position, null);
+            //Update values
+            setForm(updatedform_1);
+            return;
+        }
+        //get value
+        var localvalue = props.multiple ? node.target.files : node.target.files[0];
+        //Check if the user wants to edit it
+        if (props.onChange)
+            localvalue = props.onChange(filters(localvalue, props.filters), node);
+        //Set it in the context
+        var updatedform = __assign({}, form);
+        updatedform = dig(updatedform, position, localvalue);
+        //Update values
+        setForm(updatedform);
+    }, [props, form]);
+    //-------------------------------------------------
+    // Render
+    //-------------------------------------------------
+    return (React.createElement("input", __assign({ type: "file" }, props, { name: props.name, id: props.name, onChange: onChange })));
+}
 
 //Modules components
 //Separated components
@@ -322,6 +363,7 @@ var Text$1 = Text;
 var Toggle$1 = Toggle;
 var Select$1 = Select;
 var Wrapper$1 = Wrapper;
+var File$1 = File;
 //Bundled
 var bundled = {
     //Components
@@ -332,8 +374,8 @@ var bundled = {
     Toggle: Toggle,
     Select: Select,
     Wrapper: Wrapper,
+    File: File,
 };
-//# sourceMappingURL=index.js.map
 
 exports.Form = Form$1;
 exports.Group = Group$1;
@@ -342,5 +384,6 @@ exports.Text = Text$1;
 exports.Toggle = Toggle$1;
 exports.Select = Select$1;
 exports.Wrapper = Wrapper$1;
+exports.File = File$1;
 exports.default = bundled;
 //# sourceMappingURL=index.js.map

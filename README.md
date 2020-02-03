@@ -16,7 +16,7 @@ npm install --save formalized
 ```tsx
 import * as React		from 'react';
 
-import { Form, Input } 	from 'formalized';
+import { Form, Input } 	from 'formalization';
 
 export default function App () {
 	const onSubmit = (data) => {

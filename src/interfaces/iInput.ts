@@ -5,4 +5,5 @@ export interface iInputProps {
 	onChange? (localvalue: any, node : Object) 	: any,
 	filters? 									: Array<(value : any) => any>,
 	children? 									: ReactChildren,
+	multiple? 									: boolean,
 }
