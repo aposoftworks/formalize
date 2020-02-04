@@ -303,7 +303,16 @@ function Wrapper(props) {
     //-------------------------------------------------
     // Effects
     //-------------------------------------------------
+    //On boot
     React.useEffect(function () {
+        var val = dig(form, position);
+        if (val && val !== props.value)
+            props.setvalue(val);
+    }, []);
+    React.useEffect(function () {
+        //Compare values
+        if (dig(form, position) == props.value)
+            return;
         //Set it in the context
         var updatedform = __assign({}, form);
         var updatedvalue = filters(props.value, props.filters);
