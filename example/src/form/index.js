@@ -308,7 +308,7 @@ function Wrapper(props) {
         var val = dig(form, position);
         if (val && val !== props.value)
             props.setvalue(val);
-    }, []);
+    }, [form]);
     React.useEffect(function () {
         //Compare values
         if (dig(form, position) == props.value)

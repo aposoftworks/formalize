@@ -33,7 +33,7 @@ export default function Wrapper (props : iWrapperProps) {
 		const val = dig(form, position);
 
 		if (val && val !== props.value) props.setvalue(val);
-	}, []);
+	}, [form]);
 
 	React.useEffect(() => {
 		//Compare values

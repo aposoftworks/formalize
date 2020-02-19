@@ -1,4 +1,4 @@
-import { useContext, createElement, useState, useEffect, useCallback, useMemo, createContext } from 'react';
+import { useState, useEffect, useCallback, createElement, useContext, useMemo, createContext } from 'react';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -304,7 +304,7 @@ function Wrapper(props) {
         var val = dig(form, position);
         if (val && val !== props.value)
             props.setvalue(val);
-    }, []);
+    }, [form]);
     useEffect(function () {
         //Compare values
         if (dig(form, position) == props.value)

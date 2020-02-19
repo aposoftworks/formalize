@@ -1,34 +1,28 @@
 # formalization
 
+> A simple and straight-foward wrapper around forms that works as you would expect.
 
-[![NPM](https://img.shields.io/npm/v/formalization.svg)](https://www.npmjs.com/package/formalization) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![Build Status](https://travis-ci.org/aposoftworks/formalization.svg?branch=master)](https://travis-ci.org/aposoftworks/formalization) ![npm](https://img.shields.io/npm/dt/formalization)
-
-A simple and straight-foward wrapper around forms that works as you would expect. Fully customizable and able to handle files and images, using formdata.
+[![NPM](https://img.shields.io/npm/v/formalization.svg)](https://www.npmjs.com/package/formalization) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
 ## Install
 
 ```bash
-npm install --save formalized
+npm install --save formalization
 ```
 
 ## Usage
 
 ```tsx
-import * as React		from 'react';
+import * as React from 'react'
 
-import { Form, Input } 	from 'formalization';
+import MyComponent from 'formalization'
 
-export default function App () {
-	const onSubmit = (data) => {
-		//handle data
-	};
-
+class Example extends React.Component {
+  render () {
     return (
-	  <Form onSubmit={onSubmit}>
-	  	<Input name="email" 	/>
-	  	<Input name="password" 	/>
-	  </Form>
-    );
+      <MyComponent />
+    )
+  }
 }
 ```
 
