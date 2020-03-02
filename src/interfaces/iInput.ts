@@ -6,4 +6,6 @@ export interface iInputProps {
 	filters? 									: Array<(value : any) => any>,
 	children? 									: ReactChildren,
 	multiple? 									: boolean,
+
+	[ index : string ]							: any,
 }

@@ -1,6 +1,6 @@
 {
   "name": "formalization",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "A simple and straight-foward wrapper around forms that works as you would expect.",
   "author": "aposoftworks",
   "license": "BSD-3",
@@ -51,5 +51,8 @@
   },
   "files": [
     "dist"
+  ],
+  "keywords": [
+	  "react", "form", "submit", "filters", "simple", "group", "wrap"
   ]
 }

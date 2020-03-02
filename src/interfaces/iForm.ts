@@ -6,7 +6,9 @@ export interface iFormProps {
 	file?						: boolean,
 	onChange? (value : Object) 	: Object | boolean,
 	onSubmit (value : Object) 	: Promise<boolean> | boolean,
-	children 					: ReactChildren,
+  	children 					: ReactChildren,
+
+  	[ index : string ]			: any,
 }
 
 export interface iFormContext {
