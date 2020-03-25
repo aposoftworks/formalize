@@ -32,7 +32,7 @@ export default function Wrapper (props : iWrapperProps) {
 	React.useEffect(() => {
 		const val = dig(form, position);
 
-		if (val && val !== props.value) props.setvalue(val);
+		if (val && val !== props.value) props.setValue(val);
 	}, [form]);
 
 	React.useEffect(() => {

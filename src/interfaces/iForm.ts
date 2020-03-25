@@ -1,6 +1,6 @@
 export interface iFormProps {
 	data? 						: [Object, (value : Object) => void],
-	initialdata? 				: Object,
+	initialData? 				: Object,
 	file?						: boolean,
 	onChange? (value : Object) 	: Object | boolean,
 	onSubmit (value : Object) 	: Promise<boolean> | boolean,

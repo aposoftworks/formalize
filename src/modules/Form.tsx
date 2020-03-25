@@ -15,7 +15,7 @@ export default function Form (props : iFormProps) {
 	//-------------------------------------------------
 
 	//states
-	const [ form, setForm ] = props.data? props.data:React.useState(props.initialdata || {});
+	const [ form, setForm ] = props.data? props.data:React.useState(props.initialData || {});
 
 	//-------------------------------------------------
 	// Effects

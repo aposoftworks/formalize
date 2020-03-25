@@ -6,6 +6,8 @@ import _Text			from "./modules/Text/Text";
 import _Toggle			from "./modules/Generic/Toggle";
 import _Select			from "./modules/Generic/Select";
 import _Wrapper			from "./modules/Wrapper";
+import _Value			from "./modules/Value";
+import _When 			from "./modules/When";
 import _File			from "./modules/Generic/File";
 
 //Separated components
@@ -16,6 +18,8 @@ export const Text		= _Text;
 export const Toggle		= _Toggle;
 export const Select		= _Select;
 export const Wrapper	= _Wrapper;
+export const Value		= _Value;
+export const When		= _When;
 export const File 		= _File;
 
 //Bundled
@@ -28,6 +32,8 @@ const bundled = {
 	Toggle:		_Toggle,
 	Select:		_Select,
 	Wrapper:	_Wrapper,
+	Value:		_Value,
+	When:		_When,
 	File: 		_File,
 };
 
