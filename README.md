@@ -8,7 +8,7 @@ A simple and straight-foward wrapper around forms that works as you would expect
 ## Install
 
 ```bash
-npm install --save formalized
+npm install --save formalization
 ```
 
 ## Usage
@@ -16,7 +16,7 @@ npm install --save formalized
 ```tsx
 import * as React		from 'react';
 
-import { Form, Input } 	from 'formalization';
+import { Form, Input, Group, Text, When, Value } 	from 'formalization';
 
 export default function App () {
 	const onSubmit = (data) => {
@@ -24,10 +24,20 @@ export default function App () {
 	};
 
     return (
-	  <Form onSubmit={onSubmit}>
-	  	<Input name="email" 	/>
-	  	<Input name="password" 	/>
-	  </Form>
+		<Form onSubmit={onSubmit}>
+			<Group name="user">
+				<Input name="email" />
+				<Input name="name" 	/>
+			</Group>
+
+			<Toggle name="newsletter" />
+
+			<When name="newsletter" when={value => !!value}>
+				Thank you for signing our newsletter <Value pathname="user.name" />
+			</When>
+
+			<Text name="message" />
+		</Form>
     );
 }
 ```
