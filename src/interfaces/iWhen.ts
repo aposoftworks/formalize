@@ -1,6 +1,6 @@
 export default interface iWhen {
 	name? 		: string,
 	pathname? 	: string,
-	when 		: (value : any) => boolean,
+	when 		: boolean | ((value : any) => boolean),
 	children 	: any,
 }

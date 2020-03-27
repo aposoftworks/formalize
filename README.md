@@ -14,9 +14,9 @@ npm install --save formalization
 ## Usage
 
 ```tsx
-import * as React		from 'react';
+import * as React from 'react';
 
-import { Form, Input, Group, Text, When, Value } 	from 'formalization';
+import { Form, Input, Group, Text, When, Value } from 'formalization';
 
 export default function App () {
 	const onSubmit = (data) => {
@@ -27,7 +27,7 @@ export default function App () {
 		<Form onSubmit={onSubmit}>
 			<Group name="user">
 				<Input name="email" />
-				<Input name="name" 	/>
+				<Input name="name" />
 			</Group>
 
 			<Toggle name="newsletter" />
@@ -116,7 +116,7 @@ This component allows you to conditionally display it's children based on the co
 |---|---|---|---|
 |name|optional|string|The name of the key relative to the position in the form|
 |pathname|optional|string|The absolute path to the key and it's name|
-|when|required|function (value) => boolean|The condition that prevents the children from appearing|
+|when|required|boolean or function (value) => boolean|The condition that prevents the children from appearing|
 
 ## License
 

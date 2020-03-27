@@ -31,7 +31,7 @@ export default function When (props : iWhen) {
 
 	const onCondition = React.useMemo(() => {
 		const value 	= dig(form, (props.pathname || position) as string);
-		const condition = props.when(value);
+		const condition = props.when instanceof Function ? props.when(value):props.when;
 
 		return !!condition;
 	}, []);
