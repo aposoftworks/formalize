@@ -8,7 +8,7 @@ import GroupContext 	from "../contexts/GroupContext";
 import { iGroupProps }	from "../interfaces/iGroup";
 
 //Group class
-export default function Group (props : iGroupProps) {
+export default function Group (props : iGroupProps) : any {
 
 	//-------------------------------------------------
 	// Properties

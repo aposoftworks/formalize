@@ -3,8 +3,6 @@
 
 # dependencies
 node_modules
-example/src/form
-example/src/node
 
 # builds
 build
