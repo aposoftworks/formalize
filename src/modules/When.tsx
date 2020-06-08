@@ -34,7 +34,7 @@ export default function When (props : iWhen) {
 		const condition = props.when instanceof Function ? props.when(value):props.when;
 
 		return !!condition;
-	}, []);
+	}, [props, form]);
 
 	//-------------------------------------------------
 	// Render
