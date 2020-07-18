@@ -1,28 +1,28 @@
-//Core
+// Packages
 import * as React 		from "react";
 
-//Interfaces
+// Interfaces
 import { iInputProps } from "../interfaces/iInput";
 
-//Contexts
+// Contexts
 import FormContext 		from "../contexts/FormContext";
 import GroupContext		from "../contexts/GroupContext";
 
-//Displays an error message when it matches
+/** Displays an error message when it matches */
 export default function Error (props : iInputProps) {
 
-	//-------------------------------------------------
+	// -------------------------------------------------
 	// Properties
-	//-------------------------------------------------
+	// -------------------------------------------------
 
-	//contexts
+	// contexts
 	const { errors } 	= React.useContext(FormContext);
 	const context		= React.useContext(GroupContext);
 	const position		= context ? (context + "." + props.name):props.name;
 
-	//-------------------------------------------------
+	// -------------------------------------------------
 	// Render
-	//-------------------------------------------------
+	// -------------------------------------------------
 
 	if (errors[position])
 		return errors[position];

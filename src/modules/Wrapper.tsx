@@ -1,35 +1,37 @@
-//Core
+// Packages
 import * as React 		from "react";
 
-//Helpers
+// Helpers
 import dig 				from "../helpers/dig";
 import filters 			from "../helpers/filters";
 import validates		from "../helpers/validates";
 
-//Interfaces
+// Interfaces
 import { iWrapperProps }	from "../interfaces/iWrapper";
 
-//Contexts
+// Contexts
 import FormContext 		from "../contexts/FormContext";
 import GroupContext		from "../contexts/GroupContext";
 
-//Wrapper helps you give functionality to any component
+/** Wrapper helps you give functionality to any component */
 export default function Wrapper (props : iWrapperProps) {
 
-	//-------------------------------------------------
+	// -------------------------------------------------
 	// Properties
-	//-------------------------------------------------
+	// -------------------------------------------------
 
-	//contexts
+	// contexts
 	const { form, updateForm, updateErrors } 	= React.useContext(FormContext);
 	const context								= React.useContext(GroupContext);
+
+	// constants
 	const position 								= context ? (context + "." + props.name):props.name;
 
-	//-------------------------------------------------
+	// -------------------------------------------------
 	// Effects
-	//-------------------------------------------------
+	// -------------------------------------------------
 
-	//On boot
+	// On boot
 	React.useEffect(() => {
 		const val = dig(form, position);
 
@@ -37,23 +39,23 @@ export default function Wrapper (props : iWrapperProps) {
 	}, [form]);
 
 	React.useEffect(() => {
-		//Compare values
+		// Compare values
 		if (dig(form, position) == props.value) return;
 
-		//Set it in the context
+		// Set it in the context
 		let updatedvalue = filters(props.value, props.filters);
 
-		//Check if validations passes
+		// Check if validations passes
 		let validation = validates(updatedvalue, props.validates);
 		if (validation) updateErrors(validation, position);
 
-		//Update values
+		// Update values
 		updateForm(updatedvalue, position);
 	}, [props.value]);
 
-	//-------------------------------------------------
+	// -------------------------------------------------
 	// Render
-	//-------------------------------------------------
+	// -------------------------------------------------
 
 	return (props.children);
 }

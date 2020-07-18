@@ -1,4 +1,4 @@
-//Modules components
+// Modules components
 import _Form			from "./modules/Form";
 import _Group			from "./modules/Group";
 import _Input			from "./modules/Text/Input";
@@ -11,7 +11,7 @@ import _When 			from "./modules/When";
 import _File			from "./modules/Generic/File";
 import _Error			from "./modules/Error";
 
-//Separated components
+// Separated components
 export const Form 		= _Form;
 export const Group		= _Group;
 export const Input		= _Input;
@@ -24,9 +24,9 @@ export const When		= _When;
 export const File 		= _File;
 export const Error 		= _Error;
 
-//Bundled
+// Bundled
 const bundled = {
-	//Components
+	// Components
 	Form: 		_Form,
 	Group:		_Group,
 	Input:		_Input,

@@ -1,8 +1,8 @@
-//Packages
+// Packages
 import * as React from "react";
 
-//Contexts
+// Contexts
 const FormContext = React.createContext<any>([]);
 
-//Export
+// Export
 export default FormContext;

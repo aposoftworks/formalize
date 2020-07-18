@@ -1,4 +1,4 @@
-// Core
+// Packages
 import * as React 		from "react";
 
 // Helpers
@@ -10,21 +10,21 @@ import FormContext 		from "../contexts/FormContext";
 // Interfaces
 import { iFormProps }	from "../interfaces/iForm";
 
-// Form class
+/** Required parent of any other form component */
 export default function Form (props : iFormProps) {
 
-	//-------------------------------------------------
+	// -------------------------------------------------
 	// Properties
-	//-------------------------------------------------
+	// -------------------------------------------------
 
 	// states
 	const [ form, setForm ] 					= props.data? props.data:React.useState(props.initialData || {});
 	const [ errors, seterrors ]					= React.useState({});
 	const [ displayerrors, setdisplayerrors ]	= React.useState({});
 
-	//-------------------------------------------------
+	// -------------------------------------------------
 	// Effects
-	//-------------------------------------------------
+	// -------------------------------------------------
 
 	React.useEffect(() => {
 		if (props.onChange) props.onChange(form);
@@ -38,9 +38,9 @@ export default function Form (props : iFormProps) {
 		if (props.validateOnChange) setdisplayerrors(errors);
 	}, [errors, props.validateOnChange]);
 
-	//-------------------------------------------------
+	// -------------------------------------------------
 	// Callbacks
-	//-------------------------------------------------
+	// -------------------------------------------------
 
 	const onProcessSubmit = React.useCallback((event) => {
 		// Prevent the page from reloading
@@ -49,7 +49,7 @@ export default function Form (props : iFormProps) {
 		// Check if the parent wants to know
 		if (!("onSubmit" in props)) return;
 
-		//Check if there is any error
+		// Check if there is any error
 		if (Object.keys(errors).length !== 0) {
 			setdisplayerrors(errors);
 			return;
@@ -106,9 +106,9 @@ export default function Form (props : iFormProps) {
 		seterrors(updatederrors);
 	}, [errors]);
 
-	//-------------------------------------------------
+	// -------------------------------------------------
 	// Render
-	//-------------------------------------------------
+	// -------------------------------------------------
 
 	// extract internal props
 	const { file, onChange, onSubmit, children, data, initialData, onError, ...htmlprops } = props;

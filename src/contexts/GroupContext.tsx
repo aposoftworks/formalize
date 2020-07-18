@@ -1,8 +1,8 @@
-//Packages
+// Packages
 import * as React from "react";
 
-//Contexts
+// Contexts
 const GroupContext	= React.createContext("");
 
-//Export
+// Export
 export default GroupContext;

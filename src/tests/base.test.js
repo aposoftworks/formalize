@@ -1,4 +1,4 @@
-//Components
+// Components
 import Form 	from '../modules/Form';
 import Group 	from '../modules/Group';
 import Input 	from '../modules/Text/Input';
