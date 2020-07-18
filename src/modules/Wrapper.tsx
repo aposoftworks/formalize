@@ -45,10 +45,7 @@ export default function Wrapper (props : iWrapperProps) {
 
 		//Check if validations passes
 		let validation = validates(updatedvalue, props.validates);
-		if (validation) {
-			updateErrors(validation, position);
-			return;
-		}
+		if (validation) updateErrors(validation, position);
 
 		//Update values
 		updateForm(updatedvalue, position);

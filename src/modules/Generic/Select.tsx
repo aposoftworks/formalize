@@ -34,10 +34,7 @@ export default function Select (props : iInputProps) {
 
 		//Check if validations passes
 		let validation = _validates(localvalue, props.validates);
-		if (validation) {
-			updateErrors(validation, position);
-			return;
-		}
+		if (validation) updateErrors(validation, position);
 
 		//Check if the user wants to edit it
 		if (props.onChange) localvalue = props.onChange(localvalue, node);

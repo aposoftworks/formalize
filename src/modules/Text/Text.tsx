@@ -36,10 +36,7 @@ export default function Text (props : iInputProps) {
 
 		//Check if validations passes
 		let validation = _validates(_value, props.validates);
-		if (validation) {
-			updateErrors(validation, position);
-			return;
-		}
+		if (validation) updateErrors(validation, position);
 
 		//Check if the user wants to edit it
 		if (props.onChange) _value = props.onChange(_value, node);

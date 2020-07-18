@@ -41,10 +41,7 @@ export default function File (props : iInputProps) {
 
 		//Check if validations passes
 		let validation = _validates(localvalue, props.validates);
-		if (validation) {
-			updateErrors(validation, position);
-			return;
-		}
+		if (validation) updateErrors(validation, position);
 
 		//Update values
 		updateForm(localvalue, position);
