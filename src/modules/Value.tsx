@@ -33,7 +33,7 @@ export default function Value (props : iValue) {
 	const useValue = React.useMemo(() => {
 		const value = props.default === undefined ? "" : props.default;
 		return filters(dig(form, (props.pathname || position) as string) || value, props.filters);
-	}, []);
+	}, [form, props]);
 
 	//-------------------------------------------------
 	// Render
