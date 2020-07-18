@@ -42,7 +42,7 @@ export default function App () {
 
 			<Toggle name="newsletter" />
 
-			<When name="newsletter" when={value => !!value}>
+			<When name="newsletter">
 				Thank you for signing our newsletter <Value pathname="user.name" />
 			</When>
 
