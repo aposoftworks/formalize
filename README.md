@@ -23,10 +23,20 @@ export default function App () {
 		//handle data
 	};
 
+	const validateEmail = (value) => {
+		if (/*validation fails*/) {
+			return "Email not valid";
+		}
+	}
+
     return (
 		<Form onSubmit={onSubmit}>
 			<Group name="user">
-				<Input name="email" />
+				<Input name="email" validates={validateEmail} />
+				<div className="error-message">
+					<Error name="email" />
+				</div>
+
 				<Input name="name" />
 			</Group>
 

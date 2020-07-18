@@ -106,7 +106,7 @@ export default function Form (props : iFormProps) {
 	const { file, onChange, onSubmit, children, data, initialData, onError, ...htmlprops } = props;
 
 	return (
-		<FormContext.Provider value={{form, updateErrors, updateForm}}>
+		<FormContext.Provider value={{form, updateErrors, updateForm, errors}}>
 			<form {...htmlprops} encType={(props.file? "multipart/form-data":undefined)} onSubmit={onProcessSubmit}>
 				{props.children}
 			</form>
