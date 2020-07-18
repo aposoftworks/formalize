@@ -42,7 +42,10 @@ export default function Form (props : iFormProps) {
 		event.preventDefault();
 
 		// Check if the parent wants to know
-        if (!("onSubmit" in props)) return;
+		if (!("onSubmit" in props)) return;
+
+		//Check if there is any error
+		if (Object.keys(errors).length !== 0) return;
 
         // Check if form is carrying a file
         let value;
@@ -78,14 +81,22 @@ export default function Form (props : iFormProps) {
 	}, [form, props]);
 
 	const updateForm = React.useCallback((value, position = "") => {
-
 		// Set it in the context
 		let updatedform = {...form};
 		updatedform 	= dig(updatedform, position, value);
 
 		// Update values
 		setForm(updatedform);
-	}, []);
+	}, [form]);
+
+	const updateErrors = React.useCallback((error, node) => {
+		// Set it in the context
+		let updatederrors 	= {...errors};
+		updatederrors[node] = error;
+
+		// Update values
+		seterrors(updatederrors);
+	}, [errors]);
 
 	//-------------------------------------------------
 	// Render
@@ -95,7 +106,7 @@ export default function Form (props : iFormProps) {
 	const { file, onChange, onSubmit, children, data, initialData, onError, ...htmlprops } = props;
 
 	return (
-		<FormContext.Provider value={{form, seterrors, updateForm}}>
+		<FormContext.Provider value={{form, updateErrors, updateForm}}>
 			<form {...htmlprops} encType={(props.file? "multipart/form-data":undefined)} onSubmit={onProcessSubmit}>
 				{props.children}
 			</form>

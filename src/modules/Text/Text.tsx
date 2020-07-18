@@ -20,8 +20,8 @@ export default function Text (props : iInputProps) {
 	//-------------------------------------------------
 
 	//Contexts
-	const { form, onErrors, updateForm } 	= React.useContext(FormContext);
-    const context							= React.useContext(GroupContext);
+	const { form, updateErrors, updateForm } 	= React.useContext(FormContext);
+    const context								= React.useContext(GroupContext);
 
     //Consts
 	const position 				= context ? (context + "." + props.name):props.name;
@@ -37,7 +37,7 @@ export default function Text (props : iInputProps) {
 		//Check if validations passes
 		let validation = validates(_value, props.validates);
 		if (validation) {
-			onErrors(validation);
+			updateErrors(validation, position);
 			return;
 		}
 

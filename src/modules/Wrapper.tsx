@@ -21,9 +21,9 @@ export default function Wrapper (props : iWrapperProps) {
 	//-------------------------------------------------
 
 	//contexts
-	const { form, updateForm, onErrors } 	= React.useContext(FormContext);
-	const context							= React.useContext(GroupContext);
-	const position 							= context ? (context + "." + props.name):props.name;
+	const { form, updateForm, updateErrors } 	= React.useContext(FormContext);
+	const context								= React.useContext(GroupContext);
+	const position 								= context ? (context + "." + props.name):props.name;
 
 	//-------------------------------------------------
 	// Effects
@@ -46,7 +46,7 @@ export default function Wrapper (props : iWrapperProps) {
 		//Check if validations passes
 		let validation = validates(updatedvalue, props.validates);
 		if (validation) {
-			onErrors(validation);
+			updateErrors(validation, position);
 			return;
 		}
 
