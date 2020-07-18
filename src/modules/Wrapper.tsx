@@ -4,6 +4,7 @@ import * as React 		from "react";
 //Helpers
 import dig 				from "../helpers/dig";
 import filters 			from "../helpers/filters";
+import validates		from "../helpers/validates";
 
 //Interfaces
 import { iWrapperProps }	from "../interfaces/iWrapper";
@@ -20,9 +21,9 @@ export default function Wrapper (props : iWrapperProps) {
 	//-------------------------------------------------
 
 	//contexts
-	const [ form, setForm ] 	= React.useContext(FormContext);
-	const context				= React.useContext(GroupContext);
-	const position 				= context ? (context + "." + props.name):props.name;
+	const { form, updateForm, onErrors } 	= React.useContext(FormContext);
+	const context							= React.useContext(GroupContext);
+	const position 							= context ? (context + "." + props.name):props.name;
 
 	//-------------------------------------------------
 	// Effects
@@ -40,12 +41,17 @@ export default function Wrapper (props : iWrapperProps) {
 		if (dig(form, position) == props.value) return;
 
 		//Set it in the context
-		let updatedform 	= {...form};
-		let updatedvalue	= filters(props.value, props.filters);
-		updatedform 		= dig(updatedform, position, updatedvalue);
+		let updatedvalue = filters(props.value, props.filters);
+
+		//Check if validations passes
+		let validation = validates(updatedvalue, props.validates);
+		if (validation) {
+			onErrors(validation);
+			return;
+		}
 
 		//Update values
-		setForm(updatedform);
+		updateForm(updatedvalue, position);
 	}, [props.value]);
 
 	//-------------------------------------------------

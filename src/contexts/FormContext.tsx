@@ -2,7 +2,7 @@
 import * as React from "react";
 
 //Contexts
-const FormContext = React.createContext<Array<any>>([]);
+const FormContext = React.createContext<any>([]);
 
 //Export
 export default FormContext;

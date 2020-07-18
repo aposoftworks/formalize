@@ -4,6 +4,7 @@ import * as React 		from "react";
 //Helpers
 import dig 				from "../../helpers/dig";
 import filters			from "../../helpers/filters";
+import validates		from "../../helpers/validates";
 
 //Interface
 import { iInputProps }	from "../../interfaces/iInput";
@@ -19,9 +20,9 @@ export default function Select (props : iInputProps) {
 	//-------------------------------------------------
 
 	//Contexts
-	const [ form, setForm ] 	= React.useContext(FormContext);
-	const context				= React.useContext(GroupContext);
-	const position 				= context ? (context + "." + props.name):props.name;
+	const { form, onErrors, updateForm } 	= React.useContext(FormContext);
+	const context							= React.useContext(GroupContext);
+	const position 							= context ? (context + "." + props.name):props.name;
 
 	//-------------------------------------------------
 	// Functions
@@ -31,15 +32,18 @@ export default function Select (props : iInputProps) {
 		//Get raw value
 		let localvalue = filters(node.target.value, props.filters);
 
+		//Check if validations passes
+		let validation = validates(localvalue, props.validates);
+		if (validation) {
+			onErrors(validation);
+			return;
+		}
+
 		//Check if the user wants to edit it
 		if (props.onChange) localvalue = props.onChange(localvalue, node);
 
-		//Set it in the context
-		let updatedform = {...form};
-		updatedform 	= dig(updatedform, position, localvalue);
-
 		//Update values
-		setForm(updatedform);
+		updateForm(localvalue, position);
 	}, [form, props.onChange]);
 
 	//-------------------------------------------------

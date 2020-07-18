@@ -20,7 +20,7 @@ export default function Value (props : iValue) {
 	//-------------------------------------------------
 
 	//Contexts
-	const [ form ] 				= React.useContext(FormContext);
+	const { form } 				= React.useContext(FormContext);
 	const context 				= React.useContext(GroupContext);
 
 	//Constants

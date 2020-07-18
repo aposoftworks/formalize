@@ -19,7 +19,7 @@ export default function When (props : iWhen) {
 	//-------------------------------------------------
 
 	//Contexts
-	const [ form ] 				= React.useContext(FormContext);
+	const { form } 				= React.useContext(FormContext);
 	const context 				= React.useContext(GroupContext);
 
 	//Constants
@@ -31,7 +31,12 @@ export default function When (props : iWhen) {
 
 	const onCondition = React.useMemo(() => {
 		const value 	= dig(form, (props.pathname || position) as string);
-		const condition = props.when instanceof Function ? props.when(value):props.when;
+		let condition;
+
+		if (props.when)
+			condition = props.when instanceof Function ? props.when(value):props.when;
+		else
+			condition = !!value;
 
 		return !!condition;
 	}, [props, form]);

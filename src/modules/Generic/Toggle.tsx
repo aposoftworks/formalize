@@ -17,10 +17,10 @@ export default function Toggle (props : iInputProps) {
 	//-------------------------------------------------
 	// Properties
 	//-------------------------------------------------
-	const [ form, setForm ] = React.useContext(FormContext);
-	const context			= React.useContext(GroupContext);
-	const position 			= context ? (context + "." + props.name):props.name;
-	const finalvalue 		= dig(form, position);
+	const { form, updateForm } 	= React.useContext(FormContext);
+	const context				= React.useContext(GroupContext);
+	const position 				= context ? (context + "." + props.name):props.name;
+	const finalvalue 			= dig(form, position);
 
 	//-------------------------------------------------
 	// Functions
@@ -33,12 +33,8 @@ export default function Toggle (props : iInputProps) {
 		//Check if the user wants to edit it
 		if (props.onChange) value = props.onChange(value, node);
 
-		//Set it in the context
-		let updatedform = {...form};
-		updatedform 	= dig(updatedform, position, value);
-
 		//Update form
-		setForm(updatedform);
+		updateForm(value, position);
 	}, [form, props]);
 
 	//-------------------------------------------------

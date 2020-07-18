@@ -1,21 +1,25 @@
-//Core
+// Core
 import * as React 		from "react";
 
-//Contexts
+// Helpers
+import dig 				from "../helpers/dig";
+
+// Contexts
 import FormContext 		from "../contexts/FormContext";
 
-//Interfaces
+// Interfaces
 import { iFormProps }	from "../interfaces/iForm";
 
-//Form class
+// Form class
 export default function Form (props : iFormProps) {
 
 	//-------------------------------------------------
 	// Properties
 	//-------------------------------------------------
 
-	//states
-	const [ form, setForm ] = props.data? props.data:React.useState(props.initialData || {});
+	// states
+	const [ errors, seterrors ]	= React.useState({});
+	const [ form, setForm ] 	= props.data? props.data:React.useState(props.initialData || {});
 
 	//-------------------------------------------------
 	// Effects
@@ -25,18 +29,22 @@ export default function Form (props : iFormProps) {
 		if (props.onChange) props.onChange(form);
 	}, [form]);
 
+	React.useEffect(() => {
+		if (props.onError) props.onError(errors);
+	}, [errors]);
+
 	//-------------------------------------------------
-	// Functions
+	// Callbacks
 	//-------------------------------------------------
 
 	const onProcessSubmit = React.useCallback((event) => {
-		//Prevent the page from reloading
+		// Prevent the page from reloading
 		event.preventDefault();
 
-		//Check if the parent wants to know
+		// Check if the parent wants to know
         if (!("onSubmit" in props)) return;
 
-        //Check if form is carrying a file
+        // Check if form is carrying a file
         let value;
         if (props.file) {
             value = new FormData();
@@ -57,10 +65,10 @@ export default function Form (props : iFormProps) {
             }
         }
 
-		//Get value from the form
+		// Get value from the form
 		value = props.onSubmit(value);
 
-        //Wait for promise response
+        // Wait for promise response
         if (value instanceof Promise) {
             value.then(response => {
                 if (response === false) setForm({});
@@ -69,15 +77,25 @@ export default function Form (props : iFormProps) {
 		else if (value === false) setForm({});
 	}, [form, props]);
 
+	const updateForm = React.useCallback((value, position = "") => {
+
+		// Set it in the context
+		let updatedform = {...form};
+		updatedform 	= dig(updatedform, position, value);
+
+		// Update values
+		setForm(updatedform);
+	}, []);
+
 	//-------------------------------------------------
 	// Render
 	//-------------------------------------------------
 
-	//extract internal props
-	const { file, onChange, onSubmit, children, ...htmlprops } = props;
+	// extract internal props
+	const { file, onChange, onSubmit, children, data, initialData, onError, ...htmlprops } = props;
 
 	return (
-		<FormContext.Provider value={[form, setForm]}>
+		<FormContext.Provider value={{form, seterrors, updateForm}}>
 			<form {...htmlprops} encType={(props.file? "multipart/form-data":undefined)} onSubmit={onProcessSubmit}>
 				{props.children}
 			</form>
