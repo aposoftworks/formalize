@@ -3,8 +3,8 @@ import * as React 		from "react";
 
 //Helpers
 import dig 				from "../../helpers/dig";
-import filters			from "../../helpers/filters";
-import validates		from "../../helpers/validates";
+import _filters			from "../../helpers/filters";
+import _validates		from "../../helpers/validates";
 
 //Interface
 import { iInputProps }	from "../../interfaces/iInput";
@@ -28,12 +28,12 @@ export default function Select (props : iInputProps) {
 	// Functions
 	//-------------------------------------------------
 
-	const onChange = React.useCallback((node) => {
+	const onChangeField = React.useCallback((node) => {
 		//Get raw value
-		let localvalue = filters(node.target.value, props.filters);
+		let localvalue = _filters(node.target.value, props.filters);
 
 		//Check if validations passes
-		let validation = validates(localvalue, props.validates);
+		let validation = _validates(localvalue, props.validates);
 		if (validation) {
 			updateErrors(validation, position);
 			return;
@@ -58,8 +58,11 @@ export default function Select (props : iInputProps) {
 	// Render
 	//-------------------------------------------------
 
+	// Remove unnecessary fields
+	const { filters, validates, onChange, multiple, ...renderprops } = props;
+
 	return (
-		<select {...props} value={value} onChange={onChange}>
+		<select {...renderprops} value={value} onChange={onChangeField}>
 			{props.children}
 		</select>
 	);

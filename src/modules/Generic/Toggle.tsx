@@ -3,7 +3,7 @@ import * as React 		from "react";
 
 //Helpers
 import dig 				from "../../helpers/dig";
-import filters			from "../../helpers/filters";
+import _filters			from "../../helpers/filters";
 
 //Interface
 import { iInputProps }	from "../../interfaces/iInput";
@@ -26,9 +26,9 @@ export default function Toggle (props : iInputProps) {
 	// Functions
     //-------------------------------------------------
 
-	const onChange = React.useCallback((node) => {
+	const onChangeField = React.useCallback((node) => {
 		//Get raw value
-		let value = filters(!finalvalue, props.filters);
+		let value = _filters(!finalvalue, props.filters);
 
 		//Check if the user wants to edit it
 		if (props.onChange) value = props.onChange(value, node);
@@ -41,7 +41,10 @@ export default function Toggle (props : iInputProps) {
 	// Render
 	//-------------------------------------------------
 
+	// Remove unnecessary fields
+	const { filters, validates, onChange, multiple, ...renderprops } = props;
+
 	return (
-		<input {...props} type="checkbox" checked={!!finalvalue} onChange={onChange} />
+		<input {...renderprops} type="checkbox" checked={!!finalvalue} onChange={onChangeField} />
 	);
 }
