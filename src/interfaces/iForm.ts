@@ -5,7 +5,8 @@ export interface iFormProps {
 	onError?					: (value : any) => void,
 	onChange? (value : Object) 	: Object | boolean,
 	onSubmit (value : Object) 	: Promise<boolean> | boolean,
-  	children 					: any,
+	children 					: any,
+	validateOnChange?			: boolean,
 
   	[ index : string ]			: any,
 }

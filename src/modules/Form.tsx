@@ -18,8 +18,9 @@ export default function Form (props : iFormProps) {
 	//-------------------------------------------------
 
 	// states
-	const [ errors, seterrors ]	= React.useState({});
-	const [ form, setForm ] 	= props.data? props.data:React.useState(props.initialData || {});
+	const [ form, setForm ] 					= props.data? props.data:React.useState(props.initialData || {});
+	const [ errors, seterrors ]					= React.useState({});
+	const [ displayerrors, setdisplayerrors ]	= React.useState({});
 
 	//-------------------------------------------------
 	// Effects
@@ -27,11 +28,15 @@ export default function Form (props : iFormProps) {
 
 	React.useEffect(() => {
 		if (props.onChange) props.onChange(form);
-	}, [form]);
+	}, [form, props.onChange]);
 
 	React.useEffect(() => {
 		if (props.onError) props.onError(errors);
-	}, [errors]);
+	}, [displayerrors, props.onError]);
+
+	React.useEffect(() => {
+		if (props.validateOnChange) setdisplayerrors(errors);
+	}, [errors, props.validateOnChange]);
 
 	//-------------------------------------------------
 	// Callbacks
@@ -45,7 +50,10 @@ export default function Form (props : iFormProps) {
 		if (!("onSubmit" in props)) return;
 
 		//Check if there is any error
-		if (Object.keys(errors).length !== 0) return;
+		if (Object.keys(errors).length !== 0) {
+			setdisplayerrors(errors);
+			return;
+		}
 
         // Check if form is carrying a file
         let value;
