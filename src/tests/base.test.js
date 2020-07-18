@@ -1,15 +1,15 @@
 // Components
-import Form		from "./modules/Form";
-import Group	from "./modules/Group";
-import Input	from "./modules/Text/Input";
-import Text		from "./modules/Text/Text";
-import Toggle	from "./modules/Generic/Toggle";
-import Select	from "./modules/Generic/Select";
-import Wrapper	from "./modules/Wrapper";
-import Value	from "./modules/Value";
-import When 	from "./modules/When";
-import File		from "./modules/Generic/File";
-import Error	from "./modules/Error";
+import Form		from "../modules/Form";
+import Group	from "../modules/Group";
+import Input	from "../modules/Text/Input";
+import Text		from "../modules/Text/Text";
+import Toggle	from "../modules/Generic/Toggle";
+import Select	from "../modules/Generic/Select";
+import Wrapper	from "../modules/Wrapper";
+import Value	from "../modules/Value";
+import When 	from "../modules/When";
+import File		from "../modules/Generic/File";
+import Error	from "../modules/Error";
 
 describe('Components present', () => {
 	it('Form', () => {
