@@ -67,6 +67,8 @@ The core component of the form, this handles, gathers and set the data. If you r
 |file|optional|boolean|Changes the result of the onChange/onSubmit to a FormData|
 |onChange|optional|function (data)|Function that returns the data when the form is updated|
 |onSubmit|required|function (data)|Function that returns the data when the form is submitted|
+|onError|optional|function (data)|Function that returns errors messages given|
+|validateOnChange|optional|boolean|Enable callback calls and updates on change, instead of submit|
 
 ### Group
 
@@ -77,6 +79,16 @@ Group component allow you to nest data inside of objects
 |name|requirement|type|description|
 |---|---|---|---|
 |name|required|string|The key that this object will be recognized inside of the form result|
+
+### Error
+
+Displays error messages from the component linked
+
+#### props
+
+|name|requirement|type|description|
+|---|---|---|---|
+|name|required|string|The name that this component will print errors from|
 
 ### Input | Text | File | Select | Toggle
 
