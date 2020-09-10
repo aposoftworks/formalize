@@ -35,10 +35,6 @@ export default function Text (props : iInputProps) {
 		// Get raw value
 		let localvalue = _filters(event.target.value, props.filters);
 
-		// Check if validations passes
-		let validation = _validates(localvalue, props.validates);
-		updateErrors(validation, position);
-
 		// Check if the user wants to edit it
 		if (props.onChange) localvalue = props.onChange(localvalue, event);
 
@@ -49,6 +45,12 @@ export default function Text (props : iInputProps) {
 	// -------------------------------------------------
 	// Effects
 	// -------------------------------------------------
+
+	// Check if validations passes
+	React.useEffect(() => {
+		let validation = _validates(dig(form, position) || "", props.validates);
+		updateErrors(validation, position);
+	}, [form]);
 
 	React.useEffect(() => {
 		onChangeField({target:{value}});

@@ -94,7 +94,7 @@ export default function Form (props : iFormProps) {
 		updatedform 	= dig(updatedform, position, value);
 
 		// Update values
-		setForm(updatedform);
+		setForm(() => updatedform);
 	}, [form]);
 
 	const updateErrors = React.useCallback((error, node) => {
