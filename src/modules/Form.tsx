@@ -98,12 +98,18 @@ export default function Form (props : iFormProps) {
 	}, [form]);
 
 	const updateErrors = React.useCallback((error, node) => {
-		// Set it in the context
-		let updatederrors 	= {...errors};
-		updatederrors[node] = error;
-
 		// Update values
-		seterrors(updatederrors);
+		seterrors((errors) => {
+			// Set it in the context
+			let updatederrors 	= {...errors};
+
+			if (error !== undefined)
+				updatederrors[node] = error;
+			else
+				delete updatederrors[node];
+
+			return updatederrors;
+		});
 	}, [errors]);
 
 	// -------------------------------------------------

@@ -23,21 +23,3 @@ export const Value		= _Value;
 export const When		= _When;
 export const File 		= _File;
 export const Error 		= _Error;
-
-// Bundled
-const bundled = {
-	// Components
-	Form: 		_Form,
-	Group:		_Group,
-	Input:		_Input,
-	Text:		_Text,
-	Toggle:		_Toggle,
-	Select:		_Select,
-	Wrapper:	_Wrapper,
-	Value:		_Value,
-	When:		_When,
-	File: 		_File,
-	Error:		_Error,
-};
-
-export default bundled;

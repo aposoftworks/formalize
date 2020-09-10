@@ -27,7 +27,7 @@ export default function Select (props : iInputProps) {
 	const position 								= context ? (context + "." + props.name):props.name;
 
 	// -------------------------------------------------
-	// Functions
+	// Callbacks
 	// -------------------------------------------------
 
 	const onChangeField = React.useCallback((node) => {
@@ -36,7 +36,7 @@ export default function Select (props : iInputProps) {
 
 		// Check if validations passes
 		let validation = _validates(localvalue, props.validates);
-		if (validation) updateErrors(validation, position);
+		updateErrors(validation, position);
 
 		// Check if the user wants to edit it
 		if (props.onChange) localvalue = props.onChange(localvalue, node);
@@ -52,6 +52,14 @@ export default function Select (props : iInputProps) {
 	const value = React.useMemo(() => {
 		return dig(form, position);
 	}, [form]);
+
+	// -------------------------------------------------
+	// Effects
+	// -------------------------------------------------
+
+	React.useEffect(() => {
+		onChangeField({target:{value}});
+	}, []);
 
 	// -------------------------------------------------
 	// Render

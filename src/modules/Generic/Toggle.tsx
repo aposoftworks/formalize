@@ -28,7 +28,7 @@ export default function Toggle (props : iInputProps) {
 	const finalvalue 			= dig(form, position);
 
 	// -------------------------------------------------
-	// Functions
+	// Callbacks
     // -------------------------------------------------
 
 	const onChangeField = React.useCallback((node) => {

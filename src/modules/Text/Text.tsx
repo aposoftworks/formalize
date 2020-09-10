@@ -28,22 +28,31 @@ export default function Text (props : iInputProps) {
     const value                 = dig(form, position) || "";
 
 	// -------------------------------------------------
-	// Functions
+	// Callbacks
 	// -------------------------------------------------
-	const onChangeField = React.useCallback((node) => {
+
+	const onChangeField = React.useCallback((event) => {
 		// Get raw value
-		let _value = _filters(node.target.value, props.filters);
+		let localvalue = _filters(event.target.value, props.filters);
 
 		// Check if validations passes
-		let validation = _validates(_value, props.validates);
-		if (validation) updateErrors(validation, position);
+		let validation = _validates(localvalue, props.validates);
+		updateErrors(validation, position);
 
 		// Check if the user wants to edit it
-		if (props.onChange) _value = props.onChange(_value, node);
+		if (props.onChange) localvalue = props.onChange(localvalue, event);
 
 		// Update values
-		updateForm(_value, position);
+		updateForm(localvalue, position);
 	}, [form, props.onChange]);
+
+	// -------------------------------------------------
+	// Effects
+	// -------------------------------------------------
+
+	React.useEffect(() => {
+		onChangeField({target:{value}});
+	}, []);
 
 	// -------------------------------------------------
 	// Render
