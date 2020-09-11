@@ -18,7 +18,7 @@ export default function Form (props : iFormProps) {
 	// -------------------------------------------------
 
 	// states
-	const [ form, setForm ] 					= props.data? props.data:React.useState(props.initialData || {});
+	const [ form, setForm ] 					= React.useState(props.initialData || {});
 	const [ errors, seterrors ]					= React.useState({});
 	const [ displayerrors, setdisplayerrors ]	= React.useState({});
 
@@ -27,7 +27,14 @@ export default function Form (props : iFormProps) {
 	// -------------------------------------------------
 
 	React.useEffect(() => {
+		const { data } = props;
+		if (data !== undefined) setForm(() => data[0]);
+	}, [props.data]);
+
+	React.useEffect(() => {
 		if (props.onChange) props.onChange(form);
+		const { data } = props;
+		if (data !== undefined) data[1](() => form);
 	}, [form, props.onChange]);
 
 	React.useEffect(() => {
