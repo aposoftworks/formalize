@@ -57,7 +57,7 @@ export default function Input (props : iInputProps) {
 	React.useEffect(() => {
 		let validation = _validates(dig(form, position) || "", props.validates);
 		updateErrors(validation, position);
-	}, [form]);
+	}, [form, value]);
 
 	React.useEffect(() => {
 		onChangeField({target:{value}});

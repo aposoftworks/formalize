@@ -1,7 +1,13 @@
 {
   "name": "formalization",
-  "version": "1.4.21",
-  "keywords": ["form", "react", "condition", "validation", "component"],
+  "version": "1.4.24",
+  "keywords": [
+    "form",
+    "react",
+    "condition",
+    "validation",
+    "component"
+  ],
   "description": "A simple and straight-forward wrapper around forms that works as you would expect",
   "author": "aposoftworks",
   "license": "BSD-3-Clause",
@@ -34,9 +40,9 @@
     "@types/node": "^12.12.38",
     "@types/react": "^16.9.27",
     "@types/react-dom": "^16.9.7",
-    "microbundle-crl": "^0.13.10",
     "cross-env": "^7.0.2",
     "gh-pages": "^2.2.0",
+    "microbundle-crl": "^0.13.10",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.4",
     "react": "^16.13.1",

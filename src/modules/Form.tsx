@@ -32,9 +32,12 @@ export default function Form (props : iFormProps) {
 	}, [props.data]);
 
 	React.useEffect(() => {
-		if (props.onChange) props.onChange(form);
 		const { data } = props;
 		if (data !== undefined) data[1](() => form);
+	}, [form]);
+
+	React.useEffect(() => {
+		if (props.onChange) props.onChange(form);
 	}, [form, props.onChange]);
 
 	React.useEffect(() => {
@@ -93,15 +96,18 @@ export default function Form (props : iFormProps) {
             });
         }
 		else if (value === false) setForm({});
-	}, [form, props]);
+	}, [form, props, errors]);
 
 	const updateForm = React.useCallback((value, position = "") => {
-		// Set it in the context
-		let updatedform = {...form};
-		updatedform 	= dig(updatedform, position, value);
 
-		// Update values
-		setForm(() => updatedform);
+		setForm((form) => {
+			// Set it in the context
+			let updatedform = {...form};
+			updatedform 	= dig(updatedform, position, value);
+
+			// Update values
+			return updatedform;
+		});
 	}, [form]);
 
 	const updateErrors = React.useCallback((error, node) => {
